@@ -36,9 +36,16 @@ async def on_ready():
         activity=discord.CustomActivity(name="By keitou_hazime")
     )
     # -------------------------------------------
-
     try:
         synced = await bot.tree.sync()
         print(f"✅ Đã đồng bộ {len(synced)} lệnh.")
     except Exception as e:
         print(f"❌ Lỗi: {e}")
+
+if __name__ == "__main__":
+    token = os.getenv("DISCORD_TOKEN")
+    if not token:
+        print("❌ LỖI: Không tìm thấy DISCORD_TOKEN trong file .env!")
+    else:
+        print("🔄 Đang kết nối tới Discord...")
+        bot.run(token)
