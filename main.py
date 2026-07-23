@@ -29,17 +29,16 @@ bot = TestingBot()
 
 @bot.event
 async def on_ready():
-    print(f"🚀 Bot {bot.user} đã sẵn sàng và đang hoạt động!")
+    print(f"🚀 Bot {bot.user} đã sẵn sàng!")
     
-    # --- THÊM DÒNG NÀY ĐỂ HIỆN HOẠT ĐỘNG BY KEITOU_HAZIME ---
+    # --- CHỈ HIỂN THỊ DÒNG STATUS NGUYÊN BẢN ---
     await bot.change_presence(
-        activity=discord.Game(name="By keitou_hazime")
+        activity=discord.CustomActivity(name="By keitou_hazime")
     )
-    # -------------------------------------------------------
+    # -------------------------------------------
 
-    # Các đoạn code sync lệnh (cũ) của bạn giữ nguyên ở dưới...
     try:
         synced = await bot.tree.sync()
-        print(f"✅ Đã đồng bộ {len(synced)} lệnh Slash Commands.")
+        print(f"✅ Đã đồng bộ {len(synced)} lệnh.")
     except Exception as e:
-        print(f"❌ Lỗi đồng bộ lệnh: {e}")
+        print(f"❌ Lỗi: {e}")
