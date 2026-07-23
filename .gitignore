@@ -1,0 +1,11 @@
+# Bỏ qua file chứa Token bảo mật
+.env
+
+# Bỏ qua file dữ liệu (tránh làm mất data thật trên VPS khi đồng bộ)
+data.json
+*.json
+
+# Bỏ qua môi trường ảo và file rác của Python
+venv/
+__pycache__/
+*.pyc
