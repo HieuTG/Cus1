@@ -29,10 +29,17 @@ bot = TestingBot()
 
 @bot.event
 async def on_ready():
-    print(f'🚀 Bot {bot.user} đã sẵn sàng và đang hoạt động!')
+    print(f"🚀 Bot {bot.user} đã sẵn sàng và đang hoạt động!")
+    
+    # --- THÊM DÒNG NÀY ĐỂ HIỆN HOẠT ĐỘNG BY KEITOU_HAZIME ---
+    await bot.change_presence(
+        activity=discord.Game(name="By keitou_hazime")
+    )
+    # -------------------------------------------------------
 
-if __name__ == "__main__":
-    if config.DISCORD_TOKEN:
-        bot.run(config.DISCORD_TOKEN)
-    else:
-        print("❌ LỖI: Chưa truyền DISCORD_TOKEN trong file .env!")
+    # Các đoạn code sync lệnh (cũ) của bạn giữ nguyên ở dưới...
+    try:
+        synced = await bot.tree.sync()
+        print(f"✅ Đã đồng bộ {len(synced)} lệnh Slash Commands.")
+    except Exception as e:
+        print(f"❌ Lỗi đồng bộ lệnh: {e}")
